@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+	.img {
+		height: 300px;
+	}
+
+	.img-container {
+		display: block;
+		margin: auto;
+		width: 50%;
+	}
+
+	.my {
+		margin: 10px 0;
+	}
+
+	.text {
+		text-align: center;
+	}
+</style>
+
+<div class="container text">
+	<div id="box">
+		<div class="img-container">
+			<img id="succes-icon" class="img my" src="{% static 'check.png' %}">
+		</div>
+		<h4>Thank you for your contribution of ${{amount}}!</h4>
+		<p>Your support helps me to fulfill my quest to learn and getting learnt! You should receive a receipt to the
+			email you provided shortly :)</p>
+		<hr>
+		<a class="button" href="{% url 'index' %}">&#x2190;Back to donation page</a>
+	</div>
+</div>
+
+{% endblock content %}
