@@ -25,7 +25,11 @@ SECRET_KEY = '^x7sg%-9$jm&$xkui63q^#t!bq&g1%af!0a2(2bsrf+*_eplg='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# configured hosts
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'cofe-code.herokuapp.com'
+]
 
 
 # Application definition
@@ -44,6 +48,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -120,6 +127,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+# for collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
@@ -130,5 +140,6 @@ MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-#pk_test_JPes2iUn6rZLvR3ExBmBwn2h00E4NHohJn
-#sk_test_3E0FXJHdJTyGaNl9ZNHiAc9O00IESuhi5h
+# if app is live debug will be false
+if os.getcwd() == '/app':
+    DEBUG = False
